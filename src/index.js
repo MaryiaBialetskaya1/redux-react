@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createStore } from "redux";
 
-//1 - store -all data
 //2 - action
 
 //A
@@ -26,8 +26,25 @@ const changeNumberOFItems = () => {
   };
 };
 
-//3 - reducer
+//3 - reducer - descripton of actions to change state
+
+const cart = (state = 0, action) => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      return state + 1;
+    case "REMOVE_ITEM":
+      return state - 1;
+    default:
+  }
+};
+
+//1 - store -all data
+
+let store = createStore(cart);
+
 //4 - dispatch
+
+store.dispatch(addToCart());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
