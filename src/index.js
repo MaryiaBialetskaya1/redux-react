@@ -14,7 +14,7 @@ const addToCart = () => {
   };
 };
 //B
-const addItem = () => {
+const removeItem = () => {
   return {
     type: "REMOVE_ITEM",
   };
@@ -39,12 +39,17 @@ const cart = (state = 0, action) => {
 };
 
 //1 - store -all data
-
 let store = createStore(cart);
+store.subscribe(() => console.log(store.getState()));
 
 //4 - dispatch
-
 store.dispatch(addToCart());
+store.dispatch(addToCart());
+store.dispatch(addToCart());
+store.dispatch(addToCart());
+store.dispatch(removeItem());
+store.dispatch(removeItem());
+store.dispatch(removeItem());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
