@@ -4,6 +4,7 @@ import {
   increment,
   decrement,
   incrementByAmount,
+  incrementAsync,
 } from "./redux-toolkit/counter";
 import { useState } from "react";
 
@@ -14,21 +15,34 @@ function App() {
 
   return (
     <div className="App">
-      <p>Score: {count}</p>
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
-      <div>
+      <div className="row">
+        <button className="button" onClick={() => dispatch(increment())}>
+          +
+        </button>
+        <span className="value">{count}</span>
+        <button className="button" onClick={() => dispatch(decrement())}>
+          -
+        </button>
+      </div>
+      <div className="row">
         <input
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
+          className="button"
           onClick={() =>
             dispatch(incrementByAmount(Number(incrementAmount) || 0))
           }
         >
           Add Amount
+        </button>
+        <button
+          className="button asyncButton"
+          onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
+        >
+          Add Async
         </button>
       </div>
     </div>
