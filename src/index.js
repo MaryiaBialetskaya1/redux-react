@@ -5,9 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore } from "redux";
 import cartReducer from "./reducers/cartReducer";
+import { Provider } from "react-redux";
+import { store } from "./redux-toolkit/store";
 
-let store = createStore(cartReducer);
-store.subscribe(() => console.log(store.getState()));
+let storeOne = createStore(cartReducer);
+store.subscribe(() => console.log(storeOne.getState()));
 
 // //2 - action
 
@@ -59,7 +61,9 @@ store.subscribe(() => console.log(store.getState()));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
