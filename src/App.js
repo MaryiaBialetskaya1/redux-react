@@ -4,6 +4,8 @@ import {
   increment,
   decrement,
   incrementByAmount,
+  decrementByAmount,
+  multiplyByAmount,
   incrementAsync,
 } from "./redux-toolkit/counter";
 import { useState } from "react";
@@ -37,6 +39,22 @@ function App() {
           }
         >
           Add Amount
+        </button>
+        <button
+          className="button"
+          onClick={() =>
+            dispatch(decrementByAmount(Number(incrementAmount) || 0))
+          }
+        >
+          Minus Amount
+        </button>
+        <button
+          className="button"
+          onClick={() =>
+            dispatch(multiplyByAmount(Number(incrementAmount) || 0))
+          }
+        >
+          Multiply Amount
         </button>
         <button
           className="button asyncButton"

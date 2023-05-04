@@ -17,11 +17,23 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    decrementByAmount: (state, action) => {
+      state.value -= action.payload;
+    },
+    multiplyByAmount: (state, action) => {
+      state.value *= action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+  decrementByAmount,
+  multiplyByAmount,
+} = counterSlice.actions;
 
 export const incrementAsync = (amount) => (dispatch) => {
   setTimeout(() => {
